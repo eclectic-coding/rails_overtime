@@ -8,7 +8,8 @@ if Rails.env.production?
 end
 require 'rspec/rails'
 require 'capybara/rails'
-
+require 'fuubar'
+require 'fuubar/output'
 
 begin
   ActiveRecord::Migration.maintain_test_schema!
@@ -27,4 +28,6 @@ RSpec.configure do |config|
   config.before(:each) { DatabaseCleaner.clean }
   config.infer_spec_type_from_file_location!
   config.filter_rails_from_backtrace!
+  config.fuubar_progress_bar_options = { :format => 'Completed Tests <%B> %p%% %a' }
+  config.fuubar_output_pending_results = false
 end
