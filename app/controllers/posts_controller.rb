@@ -2,7 +2,9 @@ class PostsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_post, only: %i[show]
 
-  def index; end
+  def index
+    @posts = Post.all
+  end
 
   def new
     @post = Post.new
