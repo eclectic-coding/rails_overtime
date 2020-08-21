@@ -8,8 +8,9 @@ if Rails.env.production?
 end
 require 'rspec/rails'
 require 'capybara/rails'
-require 'fuubar'
-require 'fuubar/output'
+
+include Warden::Test::Helpers
+Warden.test_mode!
 
 begin
   ActiveRecord::Migration.maintain_test_schema!

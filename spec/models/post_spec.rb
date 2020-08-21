@@ -4,10 +4,14 @@ RSpec.describe Post, type: :model do
   describe 'creation of post' do
 
     before do
-      @post = Post.create(date: Time.now, rationale: 'anything')
+      @user = User.create(email: 'user@example.com', password: 'password',
+                          password_confirmation: 'password', first_name: 'Jon',
+                          last_name: 'Dow')
+      login_as(@user)
+      @post = Post.create(date: Time.now, rationale: 'anything', user_id: @user.id)
     end
-    it 'can be created' do
 
+    it 'can be created' do
       expect(@post).to be_valid
     end
 

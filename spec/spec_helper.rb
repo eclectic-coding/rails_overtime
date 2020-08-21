@@ -2,7 +2,6 @@ require 'simplecov'
 SimpleCov.start
 
 require 'fuubar'
-# require 'fuubar/output'
 
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
